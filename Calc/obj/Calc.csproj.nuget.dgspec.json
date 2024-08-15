@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/roman/C#_shit/TestSolution/Calc/Calc.csproj": {}
+    "E:\\Programing\\C#\\TestSolution\\Calc\\Calc.csproj": {}
   },
   "projects": {
-    "/home/roman/C#_shit/TestSolution/Calc/Calc.csproj": {
+    "E:\\Programing\\C#\\TestSolution\\Calc\\Calc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/roman/C#_shit/TestSolution/Calc/Calc.csproj",
+        "projectUniqueName": "E:\\Programing\\C#\\TestSolution\\Calc\\Calc.csproj",
         "projectName": "Calc",
-        "projectPath": "/home/roman/C#_shit/TestSolution/Calc/Calc.csproj",
-        "packagesPath": "/home/roman/.nuget/packages/",
-        "outputPath": "/home/roman/C#_shit/TestSolution/Calc/obj/",
+        "projectPath": "E:\\Programing\\C#\\TestSolution\\Calc\\Calc.csproj",
+        "packagesPath": "C:\\Users\\smitp\\.nuget\\packages\\",
+        "outputPath": "E:\\Programing\\C#\\TestSolution\\Calc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/roman/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\smitp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

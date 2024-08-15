@@ -10,29 +10,33 @@ namespace CalculatorNamespace
         public static void Start()
         {
             try
-            {
+            {   
                 Console.WriteLine($"========================================");
                 Console.WriteLine($"Выберите необходимую операцию из списка:\n");
                 Console.WriteLine($"1 - Сложение.\n");
-                Console.WriteLine($"0 - Закрыть приложение.\n");
+                Console.WriteLine($"9 - Режим свободного ввода.\n");
+                Console.WriteLine($"Esc - Закрыть приложение.\n");
                 Console.WriteLine($"========================================\n");
 
                 Console.Write($"Для выбора укажите номер операции:");
-                var value = Console.ReadLine();
-                if (int.TryParse(value, out int number)){}
-                else { number = -1;}
-                
-                switch (number)
+                ConsoleKeyInfo inputKey = Console.ReadKey(false);
+                switch (inputKey.Key)
                 {
-                    case 0:
+                    case ConsoleKey.Escape:
                     break;
 
-                    case 1:
+                    case ConsoleKey.D1:
+                    Console.Clear();
                     Console.WriteLine($"{Math.Round(Sum(), 4)}");
                     Start();
                     break;
 
+                    case ConsoleKey.D9:
+                    FreeInputStart();
+                    break;
+
                     default:
+                    Console.Clear();
                     Console.WriteLine($"Введён некорректный номер.\n");
                     Start();
                     break;
@@ -41,7 +45,7 @@ namespace CalculatorNamespace
             catch(Exception ex) {throw new UnknowException("Start", ex); };
         }
 
-        public static void Start(int operationId)
+        public static void SysStart(int operationId)
         {
             try
             {                
@@ -56,13 +60,28 @@ namespace CalculatorNamespace
             catch(Exception ex) {throw new UnknowException("SysStart", ex); };
         }
 
+        public static void FreeInputStart()
+        {
+            Console.Clear();
+            Console.WriteLine($"Вы перешли в режим свободного ввода. Для выхода нажмите 'Enter' не вводя ничего в консоль.\n");
+            string? input = Console.ReadLine();
+            if (input == null) 
+            { 
+                Console.Clear(); 
+                Start(); 
+            }
+            string text = input.Replace(" ", "");
+            Console.WriteLine($"{text}");
+            // string[] words = input.Trim().Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+        }
+
         public static double Sum()
         {
             try
             {
-            Console.WriteLine($"Введите первое слагаемое: \n");
+            Console.WriteLine($"Введите первое слагаемое:");
             double number1 = InputNumber(1);
-            Console.WriteLine($"Введите второе слагаемое: \n");
+            Console.WriteLine($"Введите второе слагаемое:");
             double number2 = InputNumber(1);
             return number1 + number2;
             }
@@ -91,7 +110,7 @@ namespace CalculatorNamespace
         public IncorrectInputException(string methodName, int operationId) : base($"ERROR {methodName}: {_ERRORBODY}\n") 
         {
             Console.WriteLine($"{Message}");
-            Calculator.Start(operationId); 
+            Calculator.SysStart(operationId); 
         }
     }
 
