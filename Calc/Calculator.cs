@@ -65,14 +65,10 @@ namespace CalculatorNamespace
             Console.Clear();
             Console.WriteLine($"Вы перешли в режим свободного ввода. Для выхода нажмите 'Enter' не вводя ничего в консоль.\n");
             string? input = Console.ReadLine();
-            if (input == null) 
-            { 
-                Console.Clear(); 
-                Start(); 
-            }
             string text = input.Replace(" ", "");
-            Console.WriteLine($"{text}");
-            // string[] words = input.Trim().Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            string[] words = input.Trim().Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            int i = 0;
+            while (words[i] )
         }
 
         public static double Sum()
