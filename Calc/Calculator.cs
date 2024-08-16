@@ -67,8 +67,42 @@ namespace CalculatorNamespace
             string? input = Console.ReadLine();
             string text = input.Replace(" ", "");
             string[] words = input.Trim().Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-            int i = 0;
-            while (words[i] )
+            FreeInputCalc(words);
+        }
+
+        private static double FreeInputCalc(string[] words)
+        {
+            try
+            {   
+                int i = 0;
+                int bracketCount = 0;
+                while (words[i] != "(" || i < words.Length) { i++; }
+                BracketOpener(words, i, out int j);
+                double result;
+                // if (words.Length == 1) { return double.Parse(words[0], out result); }
+                // else { throw new CalcErrorException(); }
+                return 0;
+            }
+            catch(CalcErrorException) { throw new CalcErrorException(words); }
+
+        }
+
+        private static int BracketOpener(string[] words, int startIndex, out int closeBracketIndex)
+        {
+            int i = startIndex;
+            while (words[i] != "(" || i < words.Length) { i++; }
+            int openBracketIndex = i;
+            while (words[i] != ")") 
+            { 
+                if (words[i] == "(")
+                {
+                    openBracketIndex = BracketOpener(words, i, out int addcloseBracketIndex);
+                    i = openBracketIndex+1;
+                }
+                else { i++; }
+            }
+            closeBracketIndex = i;
+            return openBracketIndex;
         }
 
         public static double Sum()
@@ -108,6 +142,17 @@ namespace CalculatorNamespace
             Console.WriteLine($"{Message}");
             Calculator.SysStart(operationId); 
         }
+    }
+
+    public sealed class CalcErrorException : Exception
+    {
+        const string _ERRORBODY = "Ошибка рассчёта выражения!";
+        public CalcErrorException() { }
+        public CalcErrorException(string[] words) : base($"{_ERRORBODY} <{words}>\n")
+        {
+           Console.WriteLine($"{Message}"); 
+        } 
+
     }
 
     public sealed class UnknowException : Exception
